@@ -10,10 +10,12 @@ class BooksSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        with open("page.html", "wb") as f:
-            f.write(response.body)
+        body = response.css("body").get()
 
-        print("Đã lưu HTML.")
+        with open("body.html", "w", encoding="utf-8") as f:
+            f.write(body)
+
+        print("Đã lưu thẻ <body>.")
 
 
 process = CrawlerProcess(settings={"LOG_ENABLED": False})
