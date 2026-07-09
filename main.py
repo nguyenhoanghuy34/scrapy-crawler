@@ -16,6 +16,8 @@ class BooksSpider(scrapy.Spider):
             print(title)
 
 
-process = CrawlerProcess()
+process = CrawlerProcess(settings={
+    "LOG_ENABLED": False
+})
 process.crawl(BooksSpider)
 process.start()
